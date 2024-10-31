@@ -20,6 +20,66 @@
         <p id="resultat"></p>
         
     </div>
+    <script>
+        //javascript 
+
+        const Karakter=[
+            {Karakter:"A", treshold: 100},
+            {Karakter:"B", treshold: 88},
+            {Karakter:"C", treshold: 68},
+            {Karakter:"D", treshold: 43},
+            {Karakter:"E", treshold: 25},
+            {Karakter:"F", treshold: 0}
+
+        ];
+
+        const oppgave1Input = document.getElementById("oppgave1")
+        const oppgave2Input = document.getElementById("oppgave2")
+        const resultatElement = document.getElementById('resultat');
+        const beregnKnapp = document.getElementById('beregnKnapp');
+
+
+        function checkInputs (){
+            const oppgave1Value = oppgave1Input.value;
+            const oppgave2Value = oppgave2Input.value;
+
+        
+        if (oppgave1Value && oppgave2Value) {
+            beregnKnapp.disabled = false;
+            
+        }else {
+            beregnKnapp.disabled = true;
+        }
+    }
+
+        function CalculateGrade() {
+        const oppgave1Poeng = parseFloat(oppgave1Input.value);
+        const oppgave2Poeng = parseFloat(oppgave2Input.value)
+        
+        const maxPoengOppgave1 = 10;
+        const maxPoengOppgave2 = 12;
+        
+        const score = (0.3 * (oppgave1Poeng / maxPoengOppgave1 * 100)) + 
+                    (0.7 * (oppgave2Poeng / maxPoengOppgave2 * 100));
+
+
+        let finalGrade = "A"; // Default to F
+        for (let i =0; i >= 0; i++) {
+            if (score >= Karakter[i].treshold) {
+                finalGrade = Karakter[i].Karakter;
+                break;
+            }
+        }
+        resultatElement.textContent = `Din karakter er: ${finalGrade} (${score.toFixed(2)}%)`;
+        }
+        
+
+
+        oppgave1Input.addEventListener('input', checkInputs);
+        oppgave2Input.addEventListener('input', checkInputs);
+        
+        beregnKnapp.addEventListener("click" ,CalculateGrade)
+    </script>
     
 </body>
 </html>

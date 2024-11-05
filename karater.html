@@ -61,6 +61,12 @@
         
         const score = (0.3 * (oppgave1Poeng / maxPoengOppgave1 * 100)) + 
                     (0.7 * (oppgave2Poeng / maxPoengOppgave2 * 100));
+        
+        if (score >100) {
+            resultatElement.textContent = "FEIL!!";
+            return;
+            
+        }
 
 
         let finalGrade = "A"; // Default to F

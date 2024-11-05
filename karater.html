@@ -163,7 +163,7 @@ button:disabled {
         const score = (0.3 * (oppgave1Poeng / maxPoengOppgave1 * 100)) + 
                     (0.7 * (oppgave2Poeng / maxPoengOppgave2 * 100));
         
-        if (score >100) {
+        if (oppgave1Poeng >10 || oppgave2Poeng >12) {
             resultatElement.textContent = "FEIL!!";
             return;
             
